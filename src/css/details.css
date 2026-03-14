@@ -1,0 +1,141 @@
+.container-details-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+    margin-top: 30px;
+}
+
+.container-details-div img {
+    margin-right: 20px;
+    width: 250px;
+    border: solid 1px;
+    border-left: solid 1px;
+    border-right: solid 3px;
+    border-bottom: solid 3px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container-details-div div>h2 {
+    color: rgb(0, 0, 0);
+    transition: .7s all;
+
+}
+
+
+.container-details-div.dark div>h2 {
+    color: rgb(255, 255, 255);
+}
+
+
+.container-details-div div>h2::first-line {
+    color: orange;
+}
+
+.container-details-div div>p {
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    transition: 0.7s all;
+
+}
+
+.container-details-div div p:nth-of-type(2) {
+    color: rgb(41, 190, 41);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+.container-details-div.dark div>p:nth-of-type(1) {
+    color: rgb(255, 255, 255);
+
+}
+
+.button-div {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+
+.details-button {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    margin-top: 5px;
+}
+
+.details-button:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    transform: translateY(-2px);
+}
+
+.details-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+}
+
+.details-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.basket-div button {
+    background: linear-gradient(135deg, #1b3ac6 0%, #822ada 100%);
+    width: 130px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    transition: 0.5s all;
+}
+
+.basket-div button:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    transform: translateY(-2px);
+}
+
+.basket-div button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+}
+
+.basket-div button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.show-alert-succes {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    margin-top: 10px;
+}
+
+.show-alert-succes.wakeup-alert-succes {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
