@@ -5,13 +5,17 @@ import axios from 'axios'
 const initialState = {
     products: [],
     selectedProduct: {},
-    loading: true
+    loading: true,
+    error: null
 }
 
-// İlk parametre olarak action type string'i eklenmeli
-export const getAllProducts = createAsyncThunk('user', async () => {
-    const response = await axios.get('https://fakestoreapi.com/products')
-    return response.data
+export const getAllProducts = createAsyncThunk('products/getAllProducts', async (_, { rejectWithValue }) => {
+    try {
+        const response = await axios.get('http://localhost:3000/products')
+        return response.data
+    } catch (error) {
+        return rejectWithValue(error.message || 'Ürünler yüklenirken bir hata oluştu.')
+    }
 })
 
 export const productsSlice = createSlice({
@@ -24,16 +28,18 @@ export const productsSlice = createSlice({
         builder.addCase(getAllProducts.fulfilled, (state, action) => {
             state.products = action.payload
             state.loading = false
+            state.error = null
             console.log("fulfilled mode")
         })
         builder.addCase(getAllProducts.pending, (state) => {
             state.loading = true
+            state.error = null
             console.log("pending mode")
         })
-        // Hata durumu için de bir case eklemek iyi olur
         builder.addCase(getAllProducts.rejected, (state, action) => {
             state.loading = false
-            console.log("rejected mode", action.error)
+            state.error = action.payload || action.error.message
+            console.log("rejected mode", state.error)
         })
     }
 })
